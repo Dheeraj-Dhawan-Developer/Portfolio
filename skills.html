@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dheeraj Dhawan - Skills</title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0a0f1a;
+      color: #fff;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    /* STAR BACKGROUND ANIMATION */
+    .stars {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+    .star {
+      position: absolute;
+      width: 4px; height: 4px;
+      background: #1abc9c;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #1abc9c, 0 0 20px #1abc9c;
+      animation: moveStar 15s linear infinite;
+    }
+    @keyframes moveStar {
+      from { transform: translateY(0) scale(1); opacity: 1; }
+      to   { transform: translateY(100vh) scale(0.5); opacity: 0.2; }
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background: rgba(20, 25, 40, 0.9);
+      position: sticky; top: 0; z-index: 100;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo-area h1 { font-size: 20px; font-weight: 600; }
+    .logo-area h1 span { font-weight: 300; font-size: 14px; color: #bbb; }
+
+    /* Small profile */
+    .profile-small {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid #00c3ff;
+      box-shadow: 0 0 15px #00c3ff55;
+      transition: all 0.8s ease;
+    }
+    .profile-small img { width: 100%; height: 100%; object-fit: cover; }
+
+    nav ul { display: flex; list-style: none; gap: 1.5rem; }
+    nav ul li a {
+      color: #fff; padding: 6px 10px; border-radius: 6px;
+      text-decoration: none; transition: 0.3s;
+    }
+    nav ul li a:hover, nav ul li a.active { background: #00c3ff; color: #0a0f1a; }
+
+    /* Section */
+    section { padding: 4rem 5%; }
+    section h2 {
+      text-align: center; font-size: 2rem; margin-bottom: 2rem;
+      color: #1abc9c; letter-spacing: 1px;
+    }
+
+    /* Skills cards */
+    .skills-container {
+      max-width: 1000px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .skill-card {
+      background: rgba(20, 25, 40, 0.85);
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .skill-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.4);
+    }
+    .skill-card i {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: #1abc9c;
+    }
+    .skill-card h3 {
+      margin-bottom: 0.8rem;
+      color: #1abc9c;
+      font-size: 1.2rem;
+    }
+    .skill-card p { font-size: 0.95rem; opacity: 0.9; }
+  </style>
+</head>
+<body>
+
+  <!-- Animated Stars -->
+  <div class="stars" id="stars"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo-area">
+      <div class="profile-small">
+        <img src="1.png" alt="Dheeraj">
+      </div>
+      <h1>Dheeraj Dhawan <span>Full-Stack Developer & Creative Technologist</span></h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">ABOUT ME</a></li>
+        <li><a href="education.html">EDUCATION</a></li>
+        <li><a href="experience.html">EXPERIENCE</a></li>
+        <li><a href="skills.html" class="active">SKILLS</a></li>
+        <li><a href="hobbies.html">HOBBIES</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Skills Section -->
+  <section>
+    <h2>My Skills</h2>
+    <div class="skills-container">
+
+      <!-- Technical Skills -->
+      <div class="skill-card">
+        <i class="fas fa-robot"></i>
+        <h3>AI & Machine Learning</h3>
+        <p>Experience with Python ML libraries, model training, and real-world AI projects.</p>
+      </div>
+      <div class="skill-card">
+        <i class="fab fa-react"></i>
+        <h3>MERN Stack</h3>
+        <p>Proficient in MongoDB, Express.js, React.js, and Node.js for full-stack web apps.</p>
+      </div>
+      <div class="skill-card">
+        <i class="fas fa-file-word"></i>
+        <h3>Microsoft Office</h3>
+        <p>Strong command of Word, Excel, PowerPoint, and other productivity tools.</p>
+      </div>
+      <div class="skill-card">
+        <i class="fas fa-keyboard"></i>
+        <h3>Data Entry</h3>
+        <p>Accurate and efficient handling of structured and unstructured data entry tasks.</p>
+      </div>
+      <div class="skill-card">
+        <i class="fas fa-code"></i>
+        <h3>Web Development</h3>
+        <p>Responsive, interactive websites using HTML, CSS, JavaScript, and modern frameworks.</p>
+      </div>
+      <div class="skill-card">
+        <i class="fas fa-lightbulb"></i>
+        <h3>Problem Solving</h3>
+        <p>Ability to debug, optimize, and find solutions across domains efficiently.</p>
+      </div>
+
+      <!-- Professional Skills -->
+      <div class="skill-card">
+        <i class="fas fa-briefcase"></i>
+        <h3>Hardworking</h3>
+        <p>Dedicated to achieving goals with persistence and commitment.</p>
+      </div>
+      <div class="skill-card">
+        <i class="fas fa-paint-brush"></i>
+        <h3>Creativity</h3>
+        <p>Innovative approach to projects, combining logic with design thinking.</p>
+      </div>
+      <div class="skill-card">
+        <i class="fas fa-users"></i>
+        <h3>Leadership</h3>
+        <p>Strong ability to guide, motivate, and manage teams effectively.</p>
+      </div>
+      <div class="skill-card">
+        <i class="fas fa-sync-alt"></i>
+        <h3>Adaptability</h3>
+        <p>Quick to learn and adjust to changing environments and technologies.</p>
+      </div>
+      <div class="skill-card">
+        <i class="fas fa-clock"></i>
+        <h3>Time Management</h3>
+        <p>Skilled in prioritizing and balancing multiple tasks effectively.</p>
+      </div>
+      <div class="skill-card">
+        <i class="fas fa-chart-line"></i>
+        <h3>Analytical Thinking</h3>
+        <p>Ability to analyze problems deeply and provide data-driven solutions.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Script to create stars -->
+  <script>
+    const starsContainer = document.getElementById('stars');
+    for (let i = 0; i < 60; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.left = Math.random() * window.innerWidth + 'px';
+      star.style.top = Math.random() * window.innerHeight + 'px';
+      star.style.animationDuration = (10 + Math.random() * 20) + 's';
+      star.style.opacity = Math.random();
+      starsContainer.appendChild(star);
+    }
+  </script>
+
+</body>
+</html>

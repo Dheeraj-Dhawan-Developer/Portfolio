@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dheeraj Dhawan - Experience</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0a0f1a;
+      color: #fff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background: rgba(20, 25, 40, 0.9);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo-area h1 {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .logo-area h1 span {
+      font-weight: 300;
+      font-size: 14px;
+      color: #bbb;
+    }
+
+    /* Small profile */
+    .profile-small {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid #00c3ff;
+      box-shadow: 0 0 15px #00c3ff55;
+      transition: all 0.8s ease;
+    }
+
+    .profile-small img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Navigation with hover effect */
+    nav ul { display: flex; list-style: none; gap: 1.5rem; }
+    nav ul li a {
+      color: #fff; padding: 6px 10px; border-radius: 6px;
+      text-decoration: none; transition: 0.3s;
+    }
+    nav ul li a:hover, nav ul li a.active { background: #00c3ff; color: #0a0f1a; }
+
+    /* STAR BACKGROUND ANIMATION */
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .star {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #1abc9c;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #1abc9c, 0 0 20px #1abc9c;
+      animation: moveStar 15s linear infinite;
+    }
+
+    @keyframes moveStar {
+      from {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+
+      to {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0.2;
+      }
+    }
+
+    /* Timeline Section */
+    section {
+      padding: 4rem 5%;
+    }
+
+    section h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: #00c3ff;
+      letter-spacing: 1px;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #00c3ff;
+    }
+
+    .timeline-item {
+      margin-left: 60px;
+      margin-bottom: 2rem;
+      padding: 1rem 1.5rem;
+      background: #141a2b;
+      border-radius: 10px;
+      position: relative;
+      transition: transform 0.3s;
+    }
+
+    .timeline-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: -40px;
+      width: 20px;
+      height: 20px;
+      background: #00c3ff;
+      border-radius: 50%;
+    }
+
+    .timeline-item h3 {
+      margin-bottom: 0.3rem;
+      font-size: 1.2rem;
+    }
+
+    .timeline-item p {
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    /* Ongoing timeline item */
+    .timeline-item.ongoing {
+      background: linear-gradient(135deg, #00c3ff33, #1abc9c33);
+      color: #fff;
+      font-weight: 600;
+      border: 2px dashed #00c3ff;
+      position: relative;
+    }
+
+    .timeline-item.ongoing::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: -40px;
+      width: 20px;
+      height: 20px;
+      background: #00ffea;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #00ffea55;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 0.7;
+      }
+
+      50% {
+        transform: scale(1.3);
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 0.7;
+      }
+    }
+
+    /* Future timeline line */
+    /* Future timeline line - fixed alignment */
+    .timeline-future {
+      position: absolute;
+      left: 20px;
+      /* align exactly with main timeline line */
+      top: calc(100%);
+      /* start after last item */
+      width: 2px;
+      height: 150px;
+      /* length of future line */
+      background: linear-gradient(to bottom, #00c3ff, transparent);
+      animation: futureGlow 2s infinite alternate;
+    }
+
+    @keyframes futureGlow {
+      0% {
+        opacity: 0.5;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        padding: 20px;
+        text-align: center;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      nav ul {
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .timeline {
+        max-width: 100%;
+        margin-left: 0;
+      }
+
+      .timeline-item {
+        margin-left: 0;
+        padding-left: 1rem;
+      }
+
+      .timeline-item::before {
+        left: -30px;
+      }
+
+      .timeline-future {
+        left: 19px;
+      }
+    }
+  </style>
+</head>
+
+<body class="experience-page">
+
+  <!-- Animated Stars -->
+  <div class="stars" id="stars"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo-area">
+      <div class="profile-small">
+        <img src="1.png" alt="Dheeraj">
+      </div>
+      <h1>Dheeraj Dhawan <span>Full-Stack Developer & Creative Technologist</span></h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">ABOUT ME</a></li>
+        <li><a href="education.html">EDUCATION</a></li>
+        <li><a href="experience.html" class="active">EXPERIENCE</a></li>
+        <li><a href="skills.html">SKILLS</a></li>
+        <li><a href="hobbies.html">HOBBIES</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- EXPERIENCE TIMELINE -->
+  <section>
+    <h2>Professional Journey</h2>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <h3>Data Entry Operator – Jain Store <small>(2022)</small></h3>
+        <p>Worked as a Data Entry Operator, uploading Bills, Collections, and Stock into software systems.</p>
+      </div>
+
+      <div class="timeline-item">
+        <h3>Data Entry Operator – St. Manu's Convent School, Shahkot</h3>
+        <p>Managed student data, fees, and administrative tasks professionally in a reputed school.</p>
+      </div>
+
+      <!-- Ongoing Journey -->
+      <div class="timeline-item ongoing">
+        <h3>My Journey Continues...</h3>
+        <p>Currently exploring new technologies, working on exciting projects, and expanding my skill set every day. The
+          best is yet to come!</p>
+      </div>
+
+      <!-- Future timeline line -->
+      <div class="timeline-future"></div>
+
+    </div>
+  </section>
+
+  <script>
+    // Stars animation
+    const starsContainer = document.getElementById('stars');
+    for (let i = 0; i < 60; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.left = Math.random() * window.innerWidth + 'px';
+      star.style.top = Math.random() * window.innerHeight + 'px';
+      star.style.animationDuration = (10 + Math.random() * 20) + 's';
+      star.style.opacity = Math.random();
+      starsContainer.appendChild(star);
+    }
+  </script>
+
+</body>
+
+</html>

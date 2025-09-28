@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dheeraj Dhawan - Hobbies</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0a0f1a;
+      color: #fff;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* STAR BACKGROUND ANIMATION */
+    .stars {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+    .star {
+      position: absolute;
+      width: 4px; height: 4px;
+      background: #1abc9c;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #1abc9c, 0 0 20px #1abc9c;
+      animation: moveStar 15s linear infinite;
+    }
+    @keyframes moveStar {
+      from { transform: translateY(0) scale(1); opacity: 1; }
+      to   { transform: translateY(100vh) scale(0.5); opacity: 0.2; }
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background: rgba(20, 25, 40, 0.9);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .logo-area { display: flex; align-items: center; gap: 15px; }
+    .logo-area h1 { font-size: 20px; font-weight: 600; }
+    .logo-area h1 span { font-weight: 300; font-size: 14px; color: #bbb; }
+
+    .profile-small {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid #00c3ff;
+      box-shadow: 0 0 15px #00c3ff55;
+    }
+    .profile-small img { width: 100%; height: 100%; object-fit: cover; }
+
+    nav ul { display: flex; list-style: none; gap: 1.5rem; }
+    nav ul li a {
+      color: #fff; padding: 6px 10px; border-radius: 6px;
+      text-decoration: none; transition: 0.3s;
+    }
+    nav ul li a:hover, nav ul li a.active { background: #00c3ff; color: #0a0f1a; }
+
+    /* Section */
+    section { padding: 4rem 5%; }
+    section h2 {
+      text-align: center; font-size: 2rem; margin-bottom: 2rem;
+      color: #1abc9c; letter-spacing: 1px;
+    }
+
+    /* Hobbies cards */
+    .hobbies-grid {
+      max-width: 1000px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .hobby-card {
+      background: rgba(20, 25, 40, 0.85);
+      border-radius: 12px;
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      opacity: 0;
+      transform: translateY(20px);
+      cursor: pointer;
+    }
+    .hobby-card.is-visible { opacity: 1; transform: translateY(0); }
+
+    .hobby-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-bottom: 2px solid #00c3ff;
+    }
+
+    .hobby-content {
+      padding: 20px;
+    }
+    .hobby-content h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: #1abc9c;
+    }
+    .hobby-content h3 i {
+      margin-right: 8px;
+      color: #00c3ff;
+    }
+    .hobby-content p {
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+    .hobby-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+
+    /* Lightbox Styles */
+    #lightbox {
+      position: fixed;
+      display: none;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.95);
+      z-index: 200;
+      text-align: center;
+      overflow: hidden;
+    }
+    #lightbox-img {
+      max-width: 80%;
+      max-height: 80%;
+      margin-top: 5%;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #00c3ff;
+    }
+    #lightbox .close {
+      position: absolute; top: 20px; right: 30px;
+      color: #fff; font-size: 40px; cursor: pointer;
+    }
+    #lightbox .prev, #lightbox .next {
+      position: absolute;
+      top: 50%; transform: translateY(-50%);
+      color: #1abc9c; font-size: 50px; cursor: pointer;
+      padding: 10px;
+      user-select: none;
+    }
+    #lightbox .prev { left: 20px; }
+    #lightbox .next { right: 20px; }
+    #lightbox .prev:hover, #lightbox .next:hover { color: #00c3ff; }
+  </style>
+</head>
+<body>
+
+  <!-- Animated Stars -->
+  <div class="stars" id="stars"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo-area">
+      <div class="profile-small">
+        <img src="1.png" alt="Dheeraj">
+      </div>
+      <h1>Dheeraj Dhawan <span>Full-Stack Developer & Creative Technologist</span></h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">ABOUT ME</a></li>
+        <li><a href="education.html">EDUCATION</a></li>
+        <li><a href="experience.html">EXPERIENCE</a></li>
+        <li><a href="skills.html">SKILLS</a></li>
+        <li><a href="hobbies.html" class="active">HOBBIES</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hobbies Section -->
+  <section>
+    <h2>My Hobbies</h2>
+    <div class="hobbies-grid">
+
+      <!-- Sketching Card with Lightbox -->
+      <div class="hobby-card" id="sketchCard">
+        <img src="sketch1.jpg" alt="Sketching">
+        <div class="hobby-content">
+          <h3><i class="fas fa-paint-brush"></i> Sketching</h3>
+          <p>Click to view my sketches in full gallery.</p>
+        </div>
+      </div>
+
+      <div class="hobby-card">
+        <img src="chess.jpg" alt="Playing Chess">
+        <div class="hobby-content">
+          <h3><i class="fas fa-chess"></i> Playing Chess</h3>
+          <p>Challenging the mind, enhancing strategy and problem-solving skills.</p>
+        </div>
+      </div>
+
+      <div class="hobby-card">
+        <img src="rbooks.jpg" alt="Reading Books">
+        <div class="hobby-content">
+          <h3><i class="fas fa-book"></i> Reading Books</h3>
+          <p>Exploring new worlds, knowledge, and ideas through books.</p>
+        </div>
+      </div>
+
+
+      <div class="hobby-card">
+        <img src="travelling.jpg" alt="Travelling">
+        <div class="hobby-content">
+          <h3><i class="fas fa-plane"></i> Travelling</h3>
+          <p>Discovering new places, cultures, and experiences to broaden perspectives.</p>
+        </div>
+      </div>
+
+      
+
+      <div class="hobby-card">
+        <img src="meditation.jpg" alt="Meditation">
+        <div class="hobby-content">
+          <h3><i class="fas fa-spa"></i> Meditation</h3>
+          <p>Practicing mindfulness to reduce stress and improve mental clarity.</p>
+        </div>
+      </div>
+
+      <div class="hobby-card">
+        <img src="gardening.jpg" alt="Gardening">
+        <div class="hobby-content">
+          <h3><i class="fas fa-seedling"></i> Gardening</h3>
+          <p>Nurturing plants and enjoying nature, a peaceful and rewarding hobby.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Lightbox Overlay -->
+  <div id="lightbox">
+    <span class="close">&times;</span>
+    <img id="lightbox-img" src="">
+    <a class="prev">&#10094;</a>
+    <a class="next">&#10095;</a>
+  </div>
+
+  <script>
+    // Stars animation
+    const starsContainer = document.getElementById('stars');
+    for (let i = 0; i < 60; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.left = Math.random() * window.innerWidth + 'px';
+      star.style.top = Math.random() * window.innerHeight + 'px';
+      star.style.animationDuration = (10 + Math.random() * 20) + 's';
+      star.style.opacity = Math.random();
+      starsContainer.appendChild(star);
+    }
+
+    // Animate hobby cards on scroll
+    const hobbyCards = document.querySelectorAll('.hobby-card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    hobbyCards.forEach(card => observer.observe(card));
+
+    // Sketch Lightbox
+    const sketches = [
+      'sketch1.jpg', 'sketch2.jpg', 'sketch3.jpg', 'sketch4.jpg',
+      'sketch5.jpg', 'sketch6.jpg', 'sketch7.jpg', 'sketch8.jpg',
+      'sketch9.jpg', 'sketch10.jpg'
+    ];
+    let currentIndex = 0;
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    document.getElementById('sketchCard').onclick = function() {
+      lightbox.style.display = 'block';
+      currentIndex = 0;
+      lightboxImg.src = sketches[currentIndex];
+    }
+
+    document.querySelector('#lightbox .close').onclick = function() {
+      lightbox.style.display = 'none';
+    }
+
+    document.querySelector('#lightbox .prev').onclick = function() {
+      currentIndex = (currentIndex - 1 + sketches.length) % sketches.length;
+      lightboxImg.src = sketches[currentIndex];
+    }
+
+    document.querySelector('#lightbox .next').onclick = function() {
+      currentIndex = (currentIndex + 1) % sketches.length;
+      lightboxImg.src = sketches[currentIndex];
+    }
+  </script>
+
+</body>
+</html>
