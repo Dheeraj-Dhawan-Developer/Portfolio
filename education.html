@@ -13,21 +13,22 @@
     }
     body {
       font-family: 'Poppins', sans-serif;
-      /* background: linear-gradient(135deg, #1e1e2f, #2a2a40); */
       background: #0a0f1a;
       color: #fff;
       line-height: 1.6;
     }
-        /* Header */
+
+    /* Header */
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 20px 60px;
-      background: transparent;
-      animation: slideDown 1s ease;
-      flex-wrap: wrap;
       background: rgba(20, 25, 40, 0.9);
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
     .logo-area {
@@ -48,7 +49,8 @@
       display: block;
       color: #bbb;
     }
-    /* Small profile visible on experience */
+
+    /* Small profile */
     .profile-small {
       width: 50px;
       height: 50px;
@@ -58,6 +60,7 @@
       border: 2px solid #00c3ff;
       box-shadow: 0 0 15px #00c3ff55;
       transition: all 0.8s ease;
+      flex-shrink: 0;
     }
 
     .profile-small img {
@@ -66,13 +69,26 @@
       object-fit: cover;
     }
 
-    nav ul { display: flex; list-style: none; gap: 1.5rem; }
-    nav ul li a {
-      color: #fff; padding: 6px 10px; border-radius: 6px;
-      text-decoration: none; transition: 0.3s;
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+      flex-wrap: wrap;
     }
-    nav ul li a:hover, nav ul li a.active { background: #00c3ff; color: #0a0f1a; }
-    /* STAR BACKGROUND ANIMATION */
+    nav ul li a {
+      color: #fff;
+      padding: 6px 10px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    nav ul li a:hover,
+    nav ul li a.active {
+      background: #00c3ff;
+      color: #0a0f1a;
+    }
+
+    /* STAR BACKGROUND */
     .stars {
       position: fixed;
       top: 0; left: 0;
@@ -94,7 +110,6 @@
     }
 
     /* Main */
-
     .container {
       max-width: 1000px;
       margin: 2rem auto;
@@ -144,6 +159,7 @@
       font-size: 0.95rem;
       color: #eee;
     }
+
     footer {
       text-align: center;
       padding: 1rem;
@@ -151,13 +167,34 @@
       margin-top: 2rem;
       color: #bbb;
     }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      header { padding: 15px 30px; }
+      nav ul { gap: 1rem; }
+    }
+
+    @media (max-width: 768px) {
+      header { flex-direction: column; gap: 10px; text-align: center; }
+      nav ul { justify-content: center; }
+      h2 { font-size: 1.8rem; }
+      .timeline-item { padding: 1.2rem; }
+    }
+
+    @media (max-width: 480px) {
+      .logo-area h1 { font-size: 16px; }
+      .logo-area h1 span { font-size: 12px; }
+      .profile-small { width: 40px; height: 40px; }
+      h2 { font-size: 1.5rem; }
+      .timeline-item h3 { font-size: 1.1rem; }
+      .timeline-item p { font-size: 0.85rem; }
+    }
   </style>
 </head>
 <body>
 
   <!-- Animated Stars -->
   <div class="stars" id="stars"></div>
-
 
   <!-- Header -->
   <header>
@@ -178,12 +215,13 @@
     </nav>
   </header>
 
+  <!-- Content -->
   <div class="container">
     <h2>Education</h2>
     <div class="timeline">
       <div class="timeline-item">
         <h3>Bachelor of Technology (B.Tech) - Computer Science</h3>
-        <h4>Sr. Soldier Institute of Engineering and Technology</h4>
+        <h4>St. Soldier Institute of Engineering and Technology</h4>
         <span>2022-2026</span>
         <p>Specialized in software development, algorithms, and AI. Completed projects in Python, web technologies, and machine learning.</p>
       </div>
@@ -191,13 +229,13 @@
         <h3>Higher Secondary School</h3>
         <h4>State Public School, Shahkot</h4>
         <span>2022</span>
-        <p>Studied Science stream with Mathematics, Physics, and Computer Science. Participated in coding competitions and robotics workshops. Completed with 90.8%.</p>
+        <p>Studied Science stream with Mathematics, Physics, and Computer Science. Completed with <b>90.8%</b>. Active in coding competitions and robotics workshops.</p>
       </div>
       <div class="timeline-item">
         <h3>Secondary School</h3>
         <h4>State Public School, Shahkot</h4>
         <span>2020</span>
-        <p>Completed secondary education with distinction.Got 94.2%. Balanced academics with extracurricular activities including debate and sports.</p>
+        <p>Completed with <b>94.2%</b>. Balanced academics with extracurriculars including debate and sports.</p>
       </div>
     </div>
   </div>
@@ -205,6 +243,7 @@
   <footer>
     <p>&copy; 2025 Dheeraj Dhawan. All Rights Reserved.</p>
   </footer>
+
   <script>
     // Stars animation
     const starsContainer = document.getElementById('stars');
